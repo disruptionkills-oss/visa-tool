@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA World Cup 2026 Visa Planning Tool | Oke Legal Group</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .branding {
+            font-size: 0.9em;
+            color: #b8975a;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header h2 {
+            font-size: 1.8em;
+            color: #5a7a8c;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .input-section {
+            padding: 40px 30px;
+            background: #ffffff;
+            border-bottom: 3px solid #b8975a;
+        }
+
+        .form-group {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c2c2c;
+        }
+
+        select {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        select:hover {
+            border-color: #b8975a;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #b8975a;
+            box-shadow: 0 0 0 3px rgba(184, 151, 90, 0.1);
+        }
+
+        .results {
+            padding: 40px 30px;
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .country-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 6px solid;
+        }
+
+        .country-card.usa {
+            border-left-color: #2c3e50;
+        }
+
+        .country-card.canada {
+            border-left-color: #c8102e;
+        }
+
+        .country-card.mexico {
+            border-left-color: #006847;
+        }
+
+        .country-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .country-flag {
+            font-size: 3em;
+            margin-right: 20px;
+        }
+
+        .country-name {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c2c2c;
+        }
+
+        .visa-status {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .visa-free {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .visa-required {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .eta-required {
+            background: #e7f3ff;
+            color: #004085;
+        }
+
+        .section {
+            margin: 25px 0;
+        }
+
+        .section h3 {
+            color: #2c2c2c;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section h3::before {
+            content: "→";
+            margin-right: 10px;
+            color: #b8975a;
+            font-weight: bold;
+        }
+
+        .section p {
+            color: #4a4a4a;
+        }
+
+        .requirement-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .requirement-list li {
+            padding: 12px 0 12px 30px;
+            position: relative;
+            line-height: 1.6;
+            color: #4a4a4a;
+        }
+
+        .requirement-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .tip-box {
+            background: #faf8f3;
+            border-left: 4px solid #b8975a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .tip-box h4 {
+            color: #2c2c2c;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .tip-box h4::before {
+            content: "💡";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .tip-box p {
+            color: #4a4a4a;
+        }
+
+        .alert-box {
+            background: #f8f9fa;
+            border: 2px solid #b8975a;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .alert-box h3 {
+            color: #2c2c2c;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .alert-box h3::before {
+            content: "⚠️";
+            margin-right: 15px;
+            font-size: 1.5em;
+        }
+
+        .alert-box ul {
+            margin-left: 20px;
+            color: #4a4a4a;
+        }
+
+        .alert-box ul li {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .alert-box p {
+            color: #4a4a4a;
+        }
+
+        .alert-box strong {
+            color: #2c2c2c;
+        }
+
+        .important-note {
+            background: #fff5f0;
+            border-left: 4px solid #b8975a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .important-note h4 {
+            color: #2c2c2c;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .important-note h4::before {
+            content: "🔔";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .important-note p {
+            color: #4a4a4a;
+        }
+
+        .important-note strong {
+            color: #2c2c2c;
+        }
+
+        .link-button {
+            display: inline-block;
+            background: #b8975a;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: 2px solid #b8975a;
+            font-weight: 500;
+        }
+
+        .link-button:hover {
+            background: #a68449;
+            border-color: #a68449;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .footer {
+            background: #2c2c2c;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer-branding {
+            font-size: 1.2em;
+            color: #b8975a;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #b8975a;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header h2 {
+                font-size: 1.3em;
+            }
+
+            .country-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .country-flag {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="branding">Oke Legal Group - Professional Immigration Services</div>
+            <h1>⚽ FIFA WORLD CUP 2026</h1>
+            <h2>Travel & Visa Planning Tool</h2>
+            <p>🇺🇸 United States • 🇨🇦 Canada • 🇲🇽 Mexico</p>
+            <p style="margin-top: 10px; font-size: 0.95em;">Get personalized visa requirements for your country</p>
+        </div>
+
+        <div class="input-section">
+            <div class="form-group">
+                <label for="countrySelect">Select Your Country of Citizenship:</label>
+                <select id="countrySelect">
+                    <option value="">-- Choose your country --</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="results" id="results">
+            <!-- Results will be dynamically inserted here -->
+        </div>
+
+        <div class="footer">
+            <div class="footer-branding">Oke Legal Group</div>
+            <p>Professional Immigration Services</p>
+            <p style="margin-top: 20px; font-size: 1em; line-height: 1.6;">
+                <strong>Need personalized visa support for your World Cup travel?</strong><br>
+                We can help you navigate the specific requirements for your situation—consult with us today!
+            </p>
+            <a href="https://calendly.com/okelegalgroup" target="_blank" class="link-button" style="margin-top: 20px; background: #b8975a; color: white; display: inline-block;">
+                Schedule a Consultation
+            </a>
+            <p style="margin-top: 25px; font-size: 0.8em; opacity: 0.7; font-style: italic;">
+                This tool is provided for informational purposes only and does not constitute legal advice<br>
+                or create an attorney-client relationship. Visa requirements are subject to change.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Country flag emojis mapping
+        const countryFlags = {
+            'Afghanistan': '🇦🇫', 'Albania': '🇦🇱', 'Algeria': '🇩🇿', 'Andorra': '🇦🇩', 'Angola': '🇦🇴',
+            'Antigua and Barbuda': '🇦🇬', 'Argentina': '🇦🇷', 'Armenia': '🇦🇲', 'Australia': '🇦🇺',
+            'Austria': '🇦🇹', 'Azerbaijan': '🇦🇿', 'Bahamas': '🇧🇸', 'Bahrain': '🇧🇭', 'Bangladesh': '🇧🇩',
+            'Barbados': '🇧🇧', 'Belarus': '🇧🇾', 'Belgium': '🇧🇪', 'Belize': '🇧🇿', 'Benin': '🇧🇯',
+            'Bhutan': '🇧🇹', 'Bolivia': '🇧🇴', 'Bosnia and Herzegovina': '🇧🇦', 'Botswana': '🇧🇼',
+            'Brazil': '🇧🇷', 'Brunei': '🇧🇳', 'Bulgaria': '🇧🇬', 'Burkina Faso': '🇧🇫', 'Burundi': '🇧🇮',
+            'Cambodia': '🇰🇭', 'Cameroon': '🇨🇲', 'Canada': '🇨🇦', 'Cape Verde': '🇨🇻',
+            'Central African Republic': '🇨🇫', 'Chad': '🇹🇩', 'Chile': '🇨🇱', 'China': '🇨🇳',
+            'Colombia': '🇨🇴', 'Comoros': '🇰🇲', 'Congo': '🇨🇬', 'Costa Rica': '🇨🇷', 'Croatia': '🇭🇷',
+            'Cuba': '🇨🇺', 'Cyprus': '🇨🇾', 'Czech Republic': '🇨🇿', 'Denmark': '🇩🇰', 'Djibouti': '🇩🇯',
+            'Dominica': '🇩🇲', 'Dominican Republic': '🇩🇴', 'Ecuador': '🇪🇨', 'Egypt': '🇪🇬',
+            'El Salvador': '🇸🇻', 'Equatorial Guinea': '🇬🇶', 'Eritrea': '🇪🇷', 'Estonia': '🇪🇪',
+            'Eswatini': '🇸🇿', 'Ethiopia': '🇪🇹', 'Fiji': '🇫🇯', 'Finland': '🇫🇮', 'France': '🇫🇷',
+            'Gabon': '🇬🇦', 'Gambia': '🇬🇲', 'Georgia': '🇬🇪', 'Germany': '🇩🇪', 'Ghana': '🇬🇭',
+            'Greece': '🇬🇷', 'Grenada': '🇬🇩', 'Guatemala': '🇬🇹', 'Guinea': '🇬🇳', 'Guinea-Bissau': '🇬🇼',
+            'Guyana': '🇬🇾', 'Haiti': '🇭🇹', 'Honduras': '🇭🇳', 'Hong Kong': '🇭🇰', 'Hungary': '🇭🇺',
+            'Iceland': '🇮🇸', 'India': '🇮🇳', 'Indonesia': '🇮🇩', 'Iran': '🇮🇷', 'Iraq': '🇮🇶',
+            'Ireland': '🇮🇪', 'Israel': '🇮🇱', 'Italy': '🇮🇹', 'Jamaica': '🇯🇲', 'Japan': '🇯🇵',
+            'Jordan': '🇯🇴', 'Kazakhstan': '🇰🇿', 'Kenya': '🇰🇪', 'Kiribati': '🇰🇮', 'Kosovo': '🇽🇰',
+            'Kuwait': '🇰🇼', 'Kyrgyzstan': '🇰🇬', 'Laos': '🇱🇦', 'Latvia': '🇱🇻', 'Lebanon': '🇱🇧',
+            'Lesotho': '🇱🇸', 'Liberia': '🇱🇷', 'Libya': '🇱🇾', 'Liechtenstein': '🇱🇮', 'Lithuania': '🇱🇹',
+            'Luxembourg': '🇱🇺', 'Madagascar': '🇲🇬', 'Malawi': '🇲🇼', 'Malaysia': '🇲🇾', 'Maldives': '🇲🇻',
+            'Mali': '🇲🇱', 'Malta': '🇲🇹', 'Marshall Islands': '🇲🇭', 'Mauritania': '🇲🇷',
+            'Mauritius': '🇲🇺', 'Mexico': '🇲🇽', 'Micronesia': '🇫🇲', 'Moldova': '🇲🇩', 'Monaco': '🇲🇨',
+            'Mongolia': '🇲🇳', 'Montenegro': '🇲🇪', 'Morocco': '🇲🇦', 'Mozambique': '🇲🇿', 'Myanmar': '🇲🇲',
+            'Namibia': '🇳🇦', 'Nauru': '🇳🇷', 'Nepal': '🇳🇵', 'Netherlands': '🇳🇱', 'New Zealand': '🇳🇿',
+            'Nicaragua': '🇳🇮', 'Niger': '🇳🇪', 'Nigeria': '🇳🇬', 'North Korea': '🇰🇵',
+            'North Macedonia': '🇲🇰', 'Norway': '🇳🇴', 'Oman': '🇴🇲', 'Pakistan': '🇵🇰', 'Palau': '🇵🇼',
+            'Palestine': '🇵🇸', 'Panama': '🇵🇦', 'Papua New Guinea': '🇵🇬', 'Paraguay': '🇵🇾', 'Peru': '🇵🇪',
+            'Philippines': '🇵🇭', 'Poland': '🇵🇱', 'Portugal': '🇵🇹', 'Qatar': '🇶🇦', 'Romania': '🇷🇴',
+            'Russia': '🇷🇺', 'Rwanda': '🇷🇼', 'Saint Kitts and Nevis': '🇰🇳', 'Saint Lucia': '🇱🇨',
+            'Saint Vincent and the Grenadines': '🇻🇨', 'Samoa': '🇼🇸', 'San Marino': '🇸🇲',
+            'Sao Tome and Principe': '🇸🇹', 'Saudi Arabia': '🇸🇦', 'Senegal': '🇸🇳', 'Serbia': '🇷🇸',
+            'Seychelles': '🇸🇨', 'Sierra Leone': '🇸🇱', 'Singapore': '🇸🇬', 'Slovakia': '🇸🇰',
+            'Slovenia': '🇸🇮', 'Solomon Islands': '🇸🇧', 'Somalia': '🇸🇴', 'South Africa': '🇿🇦',
+            'South Korea': '🇰🇷', 'South Sudan': '🇸🇸', 'Spain': '🇪🇸', 'Sri Lanka': '🇱🇰', 'Sudan': '🇸🇩',
+            'Suriname': '🇸🇷', 'Sweden': '🇸🇪', 'Switzerland': '🇨🇭', 'Syria': '🇸🇾', 'Taiwan': '🇹🇼',
+            'Tajikistan': '🇹🇯', 'Tanzania': '🇹🇿', 'Thailand': '🇹🇭', 'Timor-Leste': '🇹🇱', 'Togo': '🇹🇬',
+            'Tonga': '🇹🇴', 'Trinidad and Tobago': '🇹🇹', 'Tunisia': '🇹🇳', 'Turkey': '🇹🇷',
+            'Turkmenistan': '🇹🇲', 'Tuvalu': '🇹🇻', 'Uganda': '🇺🇬', 'Ukraine': '🇺🇦',
+            'United Arab Emirates': '🇦🇪', 'United Kingdom': '🇬🇧', 'United States': '🇺🇸', 'Uruguay': '🇺🇾',
+            'Uzbekistan': '🇺🇿', 'Vanuatu': '🇻🇺', 'Vatican City': '🇻🇦', 'Venezuela': '🇻🇪',
+            'Vietnam': '🇻🇳', 'Yemen': '🇾🇪', 'Zambia': '🇿🇲', 'Zimbabwe': '🇿🇼'
+        };
+
+        // Comprehensive visa database
+        const visaDatabase = {
+            // Visa Waiver Program countries for USA
+            vwp: ['Andorra', 'Australia', 'Austria', 'Belgium', 'Brunei', 'Chile', 'Croatia', 'Czech Republic', 
+                  'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland',
+                  'Italy', 'Japan', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Malta', 'Monaco',
+                  'Netherlands', 'New Zealand', 'Norway', 'Poland', 'Portugal', 'San Marino', 'Singapore',
+                  'Slovakia', 'Slovenia', 'South Korea', 'Spain', 'Sweden', 'Switzerland', 'Taiwan', 'United Kingdom'],
+            
+            // eTA required for Canada (visa-exempt)
+            canadaETA: ['Andorra', 'Australia', 'Austria', 'Bahamas', 'Barbados', 'Belgium', 'British Citizen',
+                        'Brunei', 'Bulgaria', 'Chile', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia',
+                        'Finland', 'France', 'Germany', 'Greece', 'Hong Kong', 'Hungary', 'Iceland', 'Ireland',
+                        'Israel', 'Italy', 'Japan', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Malta',
+                        'Mexico', 'Monaco', 'Netherlands', 'New Zealand', 'Norway', 'Papua New Guinea', 'Poland',
+                        'Portugal', 'Romania', 'Samoa', 'San Marino', 'Singapore', 'Slovakia', 'Slovenia',
+                        'Solomon Islands', 'South Korea', 'Spain', 'Sweden', 'Switzerland', 'Taiwan', 'United Kingdom'],
+            
+            // Mexico visa-free for tourism
+            mexicoVisaFree: ['Argentina', 'Australia', 'Austria', 'Belgium', 'Brazil', 'Bulgaria', 'Canada', 'Chile',
+                            'Colombia', 'Costa Rica', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia',
+                            'Finland', 'France', 'Germany', 'Greece', 'Hong Kong', 'Hungary', 'Iceland', 'Ireland',
+                            'Israel', 'Italy', 'Japan', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Malta',
+                            'Monaco', 'Netherlands', 'New Zealand', 'Norway', 'Panama', 'Paraguay', 'Peru', 'Poland',
+                            'Portugal', 'Romania', 'San Marino', 'Singapore', 'Slovakia', 'Slovenia', 'South Korea',
+                            'Spain', 'Sweden', 'Switzerland', 'Ukraine', 'United Kingdom', 'United States', 'Uruguay',
+                            'Vatican City'],
+            
+            // Special categories
+            usVisaRequired: ['Afghanistan', 'Algeria', 'Angola', 'Azerbaijan', 'Bangladesh', 'Belarus', 'Cambodia',
+                            'Cameroon', 'China', 'Cuba', 'Egypt', 'Ethiopia', 'Ghana', 'India', 'Indonesia', 'Iran',
+                            'Iraq', 'Jordan', 'Kazakhstan', 'Kenya', 'Lebanon', 'Libya', 'Morocco', 'Myanmar',
+                            'Nepal', 'Nigeria', 'Pakistan', 'Philippines', 'Russia', 'Saudi Arabia', 'Senegal',
+                            'South Africa', 'Sri Lanka', 'Sudan', 'Syria', 'Tanzania', 'Thailand', 'Tunisia',
+                            'Turkey', 'Uganda', 'Ukraine', 'Uzbekistan', 'Venezuela', 'Vietnam', 'Yemen', 'Zimbabwe']
+        };
+
+        // All countries list
+        const allCountries = [
+            'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia',
+            'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium',
+            'Belize', 'Benin', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria',
+            'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Central African Republic', 'Chad',
+            'Chile', 'China', 'Colombia', 'Comoros', 'Congo', 'Costa Rica', 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic',
+            'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea',
+            'Eritrea', 'Estonia', 'Eswatini', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon', 'Gambia', 'Georgia',
+            'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Honduras',
+            'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy',
+            'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Kosovo', 'Kuwait', 'Kyrgyzstan', 'Laos',
+            'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Madagascar',
+            'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico',
+            'Micronesia', 'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia',
+            'Nauru', 'Nepal', 'Netherlands', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'North Korea', 'North Macedonia',
+            'Norway', 'Oman', 'Pakistan', 'Palau', 'Palestine', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru',
+            'Philippines', 'Poland', 'Portugal', 'Qatar', 'Romania', 'Russia', 'Rwanda', 'Saint Kitts and Nevis',
+            'Saint Lucia', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia',
+            'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands',
+            'Somalia', 'South Africa', 'South Korea', 'South Sudan', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Sweden',
+            'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tonga',
+            'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates',
+            'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Vatican City', 'Venezuela', 'Vietnam',
+            'Yemen', 'Zambia', 'Zimbabwe'
+        ];
+
+        // Populate country dropdown
+        const countrySelect = document.getElementById('countrySelect');
+        allCountries.forEach(country => {
+            const option = document.createElement('option');
+            option.value = country;
+            const flag = countryFlags[country] || '🏳️';
+            option.textContent = `${flag} ${country}`;
+            countrySelect.appendChild(option);
+        });
+
+        // Event listener
+        countrySelect.addEventListener('change', function() {
+            const selectedCountry = this.value;
+            if (selectedCountry) {
+                generateVisaInfo(selectedCountry);
+            } else {
+                document.getElementById('results').classList.remove('show');
+            }
+        });
+
+        function generateVisaInfo(country) {
+            const resultsDiv = document.getElementById('results');
+            
+            // Determine visa requirements
+            const usaStatus = getUSAStatus(country);
+            const canadaStatus = getCanadaStatus(country);
+            const mexicoStatus = getMexicoStatus(country);
+
+            let html = '';
+
+            // USA Card
+            html += `
+                <div class="country-card usa">
+                    <div class="country-header">
+                        <div class="country-flag">🇺🇸</div>
+                        <div>
+                            <div class="country-name">United States</div>
+                            <span class="visa-status ${usaStatus.class}">${usaStatus.label}</span>
+                        </div>
+                    </div>
+                    ${usaStatus.content}
+                </div>
+            `;
+
+            // Canada Card
+            html += `
+                <div class="country-card canada">
+                    <div class="country-header">
+                        <div class="country-flag">🇨🇦</div>
+                        <div>
+                            <div class="country-name">Canada</div>
+                            <span class="visa-status ${canadaStatus.class}">${canadaStatus.label}</span>
+                        </div>
+                    </div>
+                    ${canadaStatus.content}
+                </div>
+            `;
+
+            // Mexico Card
+            html += `
+                <div class="country-card mexico">
+                    <div class="country-header">
+                        <div class="country-flag">🇲🇽</div>
+                        <div>
+                            <div class="country-name">Mexico</div>
+                            <span class="visa-status ${mexicoStatus.class}">${mexicoStatus.label}</span>
+                        </div>
+                    </div>
+                    ${mexicoStatus.content}
+                </div>
+            `;
+
+            // Multi-country travel alert
+            html += `
+                <div class="alert-box">
+                    <h3>Multi-Country Travel Alert</h3>
+                    <p><strong>Traveling Between Host Countries:</strong></p>
+                    <ul>
+                        <li>Entry permission does <strong>not transfer</strong> between the U.S., Canada, and Mexico</li>
+                        <li>Each country has independent visa and screening rules</li>
+                        <li>Multiple entries may require multiple authorizations</li>
+                    </ul>
+                    <div class="important-note" style="margin-top: 20px;">
+                        <h4>Key Reminder</h4>
+                        <p>A visa or waiver for one host country does not guarantee entry to another. Plan accordingly and obtain all necessary authorizations before traveling.</p>
+                    </div>
+                </div>
+            `;
+
+            resultsDiv.innerHTML = html;
+            resultsDiv.classList.add('show');
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function getUSAStatus(country) {
+            if (country === 'United States') {
+                return {
+                    class: 'visa-free',
+                    label: 'U.S. Citizen',
+                    content: `
+                        <div class="section">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirement-list">
+                                <li>Valid U.S. passport for international return</li>
+                                <li>No visa or authorization needed for domestic travel</li>
+                                <li>Government-issued ID required for domestic flights</li>
+                            </ul>
+                        </div>
+                        <div class="tip-box">
+                            <h4>Planning Tip</h4>
+                            <p>If you plan to visit Canada or Mexico during the World Cup, check their entry requirements for U.S. citizens.</p>
+                        </div>
+                    `
+                };
+            } else if (visaDatabase.vwp.includes(country)) {
+                return {
+                    class: 'eta-required',
+                    label: 'ESTA Required (Visa Waiver Program)',
+                    content: `
+                        <div class="section">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirement-list">
+                                <li>Apply for ESTA (Electronic System for Travel Authorization) online</li>
+                                <li>ESTA valid for 2 years or until passport expires</li>
+                                <li>Maximum stay of 90 days per visit</li>
+                                <li>Valid passport required (typically 6 months validity)</li>
+                                <li>Must travel by air or sea (not overland from Canada/Mexico without visa)</li>
+                            </ul>
+                        </div>
+                        <div class="section">
+                            <h3>Application Process</h3>
+                            <ul class="requirement-list">
+                                <li>Apply at least 72 hours before travel (recommended 2+ weeks)</li>
+                                <li>Fee: Approximately $21 USD</li>
+                                <li>Usually processed within minutes, but can take up to 72 hours</li>
+                                <li>Apply online at: https://esta.cbp.dhs.gov</li>
+                            </ul>
+                        </div>
+                        <div class="tip-box">
+                            <h4>Planning Tip</h4>
+                            <p>Processing times can vary significantly during major events. Apply early - at least 2-4 weeks before travel to account for high demand during the World Cup.</p>
+                        </div>
+                        <a href="https://esta.cbp.dhs.gov" target="_blank" class="link-button">Apply for ESTA →</a>
+                    `
+                };
+            } else if (country === 'Canada') {
+                return {
+                    class: 'visa-free',
+                    label: 'Visa-Free Entry',
+                    content: `
+                        <div class="section">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirement-list">
+                                <li>Valid Canadian passport</li>
+                                <li>No visa required for tourism or attending events</li>
+                                <li>May stay up to 6 months</li>
+                            </ul>
+                        </div>
+                        <div class="tip-box">
+                            <h4>Planning Tip</h4>
+                            <p>Canadian citizens enjoy visa-free access to the U.S. for tourism. Bring proof of World Cup tickets if asked at the border.</p>
+                        </div>
+                    `
+                };
+            } else if (country === 'Mexico') {
+                return {
+                    class: 'visa-free',
+                    label: 'Visa-Free Entry',
+                    content: `
+                        <div class="section">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirement-list">
+                                <li>Valid Mexican passport</li>
+                                <li>No visa required for tourism or attending events</li>
+                                <li>May stay up to 6 months</li>
+                            </ul>
+                        </div>
+                        <div class="tip-box">
+                            <h4>Planning Tip</h4>
+                            <p>Mexican citizens enjoy visa-free access to the U.S. for tourism. Bring proof of World Cup tickets if asked at the border.</p>
+                        </div>
+                    `
+                };
+            } else {
+                return {
+                    class: 'visa-required',
+                    label: 'B-1/B-2 Visitor Visa Required',
+                    content: `
+                        <div class="section">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirement-list">
+                                <li>Apply for B-1/B-2 Tourist Visa at U.S. Embassy or Consulate</li>
+                                <li>Valid passport (typically 6 months beyond intended stay)</li>
+                                <li>Completed DS-160 form</li>
+                                <li>Visa interview appointment required</li>
+                                <li>Visa application fee: Approximately $185 USD</li>
+                            </ul>
+                        </div>
+                        <div class="section">
+                            <h3>Application Process</h3>
+                            <ul class="requirement-list">
+                                <li>Complete DS-160 online application form</li>
+                                <li>Pay visa application fee</li>
+                                <li>Schedule visa interview at nearest U.S. Embassy/Consulate</li>
+                                <li>Attend interview with required documents</li>
+                                <li>Wait for visa processing (times vary by location)</li>
+                            </ul>
+                        </div>
+                        <div class="section">
+                            <h3>Required Documents</h3>
+                            <ul class="requirement-list">
+                                <li>Valid passport</li>
+                                <li>DS-160 confirmation page</li>
+                                <li>Visa application fee receipt</li>
+                                <li>Photo meeting U.S. visa requirements</li>
+                                <li>Proof of ties to home country</li>
+                                <li>World Cup tickets or confirmation</li>
+                                <li>Proof of sufficient funds</li>
+                            </ul>
+                        </div>
+                        <div class="important-note">
+                            <h4>Important</h4>
+                            <p><strong>Apply early!</strong> Visa processing times can vary from a few weeks to several months depending on your location and demand. During the World Cup, expect longer wait times. We recommend applying at least 3-6 months before your planned travel date.</p>
+                        </div>
+                        <div class="tip-box">
+                            <h4>Planning Tip</h4>
+                            <p>Athletes, officials, and accredited personnel may require event-specific visas. Contact your organizing body for guidance.</p>
+                        </div>
+                        <a href="https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html" target="_blank" class="link-button">Learn More About U.S. Visitor Visas →</a>
+                    `
+                };
+            }
+        }
+
+        function getCanadaStatus(country) {
+            if (country === 'Canada') {
+                return {
+                    class: 'visa-free',
+                    label: 'Canadian Citizen',
+                    content: `
+                        <div class="section">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirement-list">
+                                <li>Valid Canadian passport or government-issued ID</li>
+                                <li>No visa or authorization needed for domestic travel</li>
+                            </ul>
+                        </div>
+                        <div class="tip-box">
+                            <h4>Planning Tip</h4>
+                            <p>If you plan to visit the U.S. or Mexico during the World Cup, check their entry requirements for Canadian citizens.</p>
+                        </div>
+                    `
+                };
+            } else if (country === 'United States') {
+                return {
+                    class: 'visa-free',
+                    label: 'Visa-Free Entry',
+                    content: `
+                        <div class="section">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirement-list">
+                                <li>Valid U.S. passport</li>
+                                <li>No visa required for tourism</li>
+                                <li>May stay up to 6 months</li>
+                            </ul>
+                        </div>
+                        <div class="important-note">
+                            <h4>Important Note</h4>
+                            <p>Do not assume U.S. visa approval allows entry into Canada. Canadian entry is separate and independent.</p>
+                        </div>
+                        <div class="tip-box">
+                            <h4>Planning Tip</h4>
+                            <p>U.S. citizens enjoy visa-free access to Canada. Bring proof of World Cup tickets if asked at the border.</p>
+                        </div>
+                    `
+                };
+            } else if (visaDatabase.canadaETA.includes(country)) {
+                return {
+                    class: 'eta-required',
+                    label: 'eTA Required (Electronic Travel Authorization)',
+                    content: `
+                        <div class="section">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirement-list">
+                                <li>Apply for eTA (Electronic Travel Authorization) online</li>
+                                <li>eTA valid for 5 years or until passport expires</li>
+                                <li>Valid passport required</li>
+                                <li>Must arrive by air (land/sea entries have different rules)</li>
+                            </ul>
+                        </div>
+                        <div class="section">
+                            <h3>Application Process</h3>
+                            <ul class="requirement-list">
+                                <li>Apply online - takes about 10 minutes</li>
+                                <li>Fee: CAD $7</li>
+                                <li>Usually approved within minutes (can take up to 72 hours)</li>
+                                <li>Linked electronically to your passport</li>
+                            </ul>
+                        </div>
+                        <div class="important-note">
+                            <h4>Important Note</h4>
+                            <p>Do not assume U.S. visa approval allows entry into Canada. The eTA requirement applies even when transiting through Canada.</p>
+                        </div>
+                        <div class="tip-box">
+                            <h4>Planning Tip</h4>
+                            <p>Apply for your eTA as soon as you book your flights. Processing is usually instant, but allow time for any issues.</p>
+                        </div>
+                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" target="_blank" class="link-button">Apply for eTA →</a>
+                    `
+                };
+            } else {
+                return {
+                    class: 'visa-required',
+                    label: 'Temporary Resident Visa Required',
+                    content: `
+                        <div class="section">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirement-list">
+                                <li>Apply for Temporary Resident Visa (Visitor Visa)</li>
+                                <li>Valid passport</li>
+                                <li>Completed application form</li>
+                                <li>Biometrics required</li>
+                                <li>Application fee: CAD $100 (single entry) or CAD $185 (multiple entry)</li>
+                            </ul>
+                        </div>
+                        <div class="section">
+                            <h3>Application Process</h3>
+                            <ul class="requirement-list">
+                                <li>Complete application online or on paper</li>
+                                <li>Pay application fee and biometrics fee (CAD $85)</li>
+                                <li>Provide biometrics at designated location</li>
+                                <li>Submit required documents</li>
+                                <li>Wait for processing (times vary by country)</li>
+                            </ul>
+                        </div>
+                        <div class="section">
+                            <h3>Required Documents</h3>
+                            <ul class="requirement-list">
+                                <li>Valid passport</li>
+                                <li>Proof of financial support</li>
+                                <li>Letter of invitation (if applicable)</li>
+                                <li>Travel itinerary and World Cup tickets</li>
+                                <li>Proof of ties to home country</li>
+                                <li>Previous travel history</li>
+                            </ul>
+                        </div>
+                        <div class="important-note">
+                            <h4>Important</h4>
+                            <p><strong>Apply early!</strong> Processing times vary but can take several weeks to months. Do not assume U.S. visa approval allows entry into Canada. This applies even when transiting through Canada.</p>
+                        </div>
+                        <div class="tip-box">
+                            <h4>Planning Tip</h4>
+                            <p>Some nationals require a temporary resident visa even when just transiting through a Canadian airport. Check if this applies to you.</p>
+                        </div>
+                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/apply-visitor-visa.html" target="_blank" class="link-button">Learn More About Canadian Visitor Visas →</a>
+                    `
+                };
+            }
+        }
+
+        function getMexicoStatus(country) {
+            if (country === 'Mexico') {
+                return {
+                    class: 'visa-free',
+                    label: 'Mexican Citizen',
+                    content: `
+                        <div class="section">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirement-list">
+                                <li>Valid Mexican ID or passport for domestic travel</li>
+                                <li>No visa or authorization needed</li>
+                            </ul>
+                        </div>
+                        <div class="tip-box">
+                            <h4>Planning Tip</h4>
+                            <p>If you plan to visit the U.S. or Canada during the World Cup, check their entry requirements for Mexican citizens.</p>
+                        </div>
+                    `
+                };
+            } else if (visaDatabase.mexicoVisaFree.includes(country)) {
+                return {
+                    class: 'visa-free',
+                    label: 'Visa-Free Entry for Tourism',
+                    content: `
+                        <div class="section">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirement-list">
+                                <li>Valid passport (6 months validity recommended)</li>
+                                <li>Complete FMM tourist card (Forma Migratoria Múltiple)</li>
+                                <li>No visa required for tourism stays up to 180 days</li>
+                                <li>Proof of onward travel may be requested</li>
+                            </ul>
+                        </div>
+                        <div class="section">
+                            <h3>FMM Tourist Card</h3>
+                            <ul class="requirement-list">
+                                <li>Available at airports, borders, and online</li>
+                                <li>Must be completed before or upon arrival</li>
+                                <li>Fee: Approximately $30 USD (often included in airfare)</li>
+                                <li>Keep the card with you - required when departing Mexico</li>
+                            </ul>
+                        </div>
+                        <div class="tip-box">
+                            <h4>Planning Tip</h4>
+                            <p>Always confirm current entry rules with official Mexican government sources before travel. Rules can change.</p>
+                        </div>
+                        <a href="https://www.inm.gob.mx/" target="_blank" class="link-button">Visit Mexican Immigration Website →</a>
+                    `
+                };
+            } else if (country === 'United States' || country === 'Canada') {
+                return {
+                    class: 'visa-free',
+                    label: 'Visa-Free Entry',
+                    content: `
+                        <div class="section">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirement-list">
+                                <li>Valid passport</li>
+                                <li>Complete FMM tourist card (Forma Migratoria Múltiple)</li>
+                                <li>No visa required for tourism</li>
+                                <li>May stay up to 180 days</li>
+                            </ul>
+                        </div>
+                        <div class="section">
+                            <h3>FMM Tourist Card</h3>
+                            <ul class="requirement-list">
+                                <li>Available at airports and borders</li>
+                                <li>Fee: Approximately $30 USD (often included in airfare)</li>
+                                <li>Keep the card with you when departing Mexico</li>
+                            </ul>
+                        </div>
+                        <div class="tip-box">
+                            <h4>Planning Tip</h4>
+                            <p>${country} citizens enjoy visa-free access to Mexico. The FMM tourist card is simple to complete upon arrival.</p>
+                        </div>
+                    `
+                };
+            } else {
+                return {
+                    class: 'visa-required',
+                    label: 'Visa Required - Verify Before Travel',
+                    content: `
+                        <div class="section">
+                            <h3>Entry Requirements</h3>
+                            <ul class="requirement-list">
+                                <li>Visa may be required for Mexican entry</li>
+                                <li>Valid passport (6 months validity)</li>
+                                <li>Application must be made at Mexican Embassy or Consulate</li>
+                                <li>Requirements vary by nationality</li>
+                            </ul>
+                        </div>
+                        <div class="section">
+                            <h3>Important Considerations</h3>
+                            <ul class="requirement-list">
+                                <li>Entry conditions depend heavily on nationality</li>
+                                <li>Some nationals with valid U.S. or Canadian visas may enter visa-free</li>
+                                <li>Processing times and fees vary by country</li>
+                                <li>Additional documentation may be required</li>
+                            </ul>
+                        </div>
+                        <div class="important-note">
+                            <h4>Critical Notice</h4>
+                            <p><strong>Always confirm current entry rules with official Mexican government sources.</strong> Mexico's visa policies can change, and special provisions may apply during the World Cup.</p>
+                        </div>
+                        <div class="tip-box">
+                            <h4>Planning Tip</h4>
+                            <p>Contact the nearest Mexican Embassy or Consulate for the most accurate and up-to-date information for your nationality. Apply well in advance of your travel dates.</p>
+                        </div>
+                        <a href="https://www.gob.mx/sre" target="_blank" class="link-button">Visit Mexican Foreign Affairs Website →</a>
+                    `
+                };
+            }
+        }
+    </script>
+</body>
+</html>
